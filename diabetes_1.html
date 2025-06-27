@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diabetes Care Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #00a896;
+      --secondary: #02c39a;
+      --accent: #ff6b6b;
+      --light: #f0f3f5;
+      --dark: #05668d;
+      --text: #333;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--dark), var(--primary));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-tabs a {
+      color: white;
+      text-decoration: none;
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 25px;
+      background-color: rgba(255,255,255,0.2);
+      transition: 0.3s;
+    }
+
+    .nav-tabs a:hover, .nav-tabs a.active {
+      background-color: rgba(255,255,255,0.4);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+    }
+
+    .toggle-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      background-color: #f5fdfc;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .toggle-content {
+      display: none;
+      padding-top: 0.8rem;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #034a70);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><i class="fas fa-hand-holding-medical"></i> Diabetes Care Guide</h1>
+  <p>Comprehensive information and resources for diabetes management and prevention</p>
+  <div class="nav-tabs">
+    <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+    <a href="#types"><i class="fas fa-notes-medical"></i> Types</a>
+    <a href="#prevention"><i class="fas fa-shield-alt"></i> Prevention</a>
+    <a href="#resources"><i class="fas fa-book-medical"></i> Resources</a>
+  </div>
+</header>
+
+<main>
+  <section id="types" class="toggle-section" onclick="toggleSection('typesContent')" ondblclick="hideSection('typesContent')">
+    <h2 class="section-title">Types of Diabetes</h2>
+    <div id="typesContent" class="toggle-content">
+      <ul>
+        <li><strong>Type 1:</strong> Autoimmune condition where the pancreas produces little/no insulin.</li>
+        <li><strong>Type 2:</strong> Insulin resistance or insufficient insulin production due to lifestyle.</li>
+        <li><strong>Gestational:</strong> Diabetes during pregnancy, risk of future Type 2 diabetes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="prevention" class="toggle-section" onclick="toggleSection('preventionContent')" ondblclick="hideSection('preventionContent')">
+    <h2 class="section-title">Prevention Tips</h2>
+    <div id="preventionContent" class="toggle-content">
+      <ul>
+        <li>Maintain a healthy diet (low sugar/carbs).</li>
+        <li>Exercise regularly (30 mins daily).</li>
+        <li>Monitor blood sugar levels.</li>
+        <li>Maintain a healthy weight.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="resources" class="toggle-section" onclick="toggleSection('resourcesContent')" ondblclick="hideSection('resourcesContent')">
+    <h2 class="section-title">Helpful Resources</h2>
+    <div id="resourcesContent" class="toggle-content">
+      <ul>
+        <li><a href="https://www.diabetes.org" target="_blank">American Diabetes Association</a></li>
+        <li><a href="https://www.who.int/news-room/fact-sheets/detail/diabetes" target="_blank">WHO - Diabetes Facts</a></li>
+        <li><a href="https://www.cdc.gov/diabetes/" target="_blank">CDC Diabetes Information</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Diabetes Care Guide | Stay Healthy</p>
+</footer>
+
+<script>
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('visible');
+  }
+
+  function hideSection(id) {
+    document.getElementById(id).classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>

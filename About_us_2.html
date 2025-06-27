@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - MedWeb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #21867a;
+            --background-color: #f0f8ff;
+            --text-color: #333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .image-content {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .image-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .image-content:hover img {
+            transform: scale(1.03);
+        }
+
+        .team-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section, .content-section.reverse {
+                flex-direction: column;
+            }
+            
+            .text-content, .image-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About MedWeb</h1>
+        <p>Your trusted partner in healthcare information</p>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Our Mission</h2>
+                <p>At MedWeb, we are committed to providing accurate, accessible, and reliable medical information to empower individuals to make informed decisions about their health. Our platform bridges the gap between medical professionals and the community, offering trustworthy resources for all your healthcare needs.</p>
+                <p>We believe that everyone deserves access to quality health information, regardless of their background or location. Our content is carefully curated and reviewed by medical experts to ensure its accuracy and relevance.</p>
+            </div>
+            <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Medical team discussing">
+            </div>
+        </section>
+
+        <section class="content-section reverse">
+            <div class="text-content">
+                <h2>Our Approach</h2>
+                <p>MedWeb combines cutting-edge technology with medical expertise to deliver personalized health information. We focus on preventive care, early detection, and holistic wellness approaches to help you maintain optimal health throughout your life.</p>
+                <p>Our platform features comprehensive guides on various health conditions, treatment options, and wellness strategies. We continuously update our content to reflect the latest medical research and guidelines.</p>
+            </div>
+            <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Doctor using digital tablet">
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Meet Our Expert Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>T.chakri</h3>
+                </div>
+                <div class="team-member">
+                    <h3>Tejeash</h3>
+                </div>
+                <div class="team-member">
+                    <h3>Sai rama krishna</h3>
+                </div>
+                <div class="team-member">
+                    <h3>Nikhil</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 MedWeb. All Rights Reserved.
+    </footer>
+</body>
+</html>

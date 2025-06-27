@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lung Health Awareness</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #5eefb7, #ffffff);
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Navigation Flexbox */
+    .nav-flexbox {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      background: linear-gradient(135deg, #1a73e8, #6ec1e4);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-weight: 600;
+      min-width: 200px;
+    }
+
+    .nav-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #0d5bba, #4fa8d3);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .section {
+      background-color: #ffffff;
+      flex: 1 1;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #00796b;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .grid-item {
+      background-color: #e1f5fe;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+    
+    .grid-long-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .grid-box {
+      background-color: #f1f8e9;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+
+    .grid-box h3 {
+      margin-bottom: 15px;
+      color: #33691e;
+    }
+
+    .grid-box ul {
+      padding-left: 25px;
+      list-style-type: none;
+    }
+
+    .grid-box ul li::before {
+      content: "-->  ";
+      color: #558b2f;
+      font-weight: bold;
+    }
+
+    .grid-box ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: auto auto auto;
+      }
+      
+      .nav-flexbox {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: auto auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lung Health Awareness</h1>
+    <p>Know about lung diseases, prevention methods, and how to maintain healthy lungs</p>
+  </header>
+
+  <div class="nav-flexbox">
+    <div class="nav-item" onclick="window.location.href='lung_calculator.html'">
+      Lung Health Assessment
+    </div>
+    <div class="nav-item" onclick="window.location.href='#diseases'">
+      Common Diseases
+    </div>
+    <div class="nav-item" onclick="window.location.href='#prevention'">
+      Prevention Tips
+    </div>
+    <div class="nav-item" onclick="window.location.href='#resources'">
+      Resources
+    </div>
+  </div>
+
+  <div class="container" id="diseases">
+    <div class="section">
+      <h2>Common Lung Diseases</h2>
+      <ul>
+        <li>Asthma</li>
+        <li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+        <li>Lung Cancer</li>
+        <li>Pneumonia</li>
+        <li>Bronchitis</li>
+        <li>Tuberculosis</li>
+      </ul>
+    </div>
+
+    <div class="section" id="prevention">
+      <h2>Prevention Tips</h2>
+      <ul>
+        <li>Avoid smoking and exposure to secondhand smoke</li>
+        <li>Stay active with regular exercise</li>
+        <li>Wear masks in polluted areas</li>
+        <li>Maintain good indoor air quality</li>
+        <li>Get vaccinated (e.g., flu and pneumonia vaccines)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item">Drink plenty of water</div>
+    <div class="grid-item">Practice deep breathing</div>
+    <div class="grid-item">Manage allergies</div>
+    <div class="grid-item">Regular health checkups</div>
+    <div class="grid-item">Eat antioxidant-rich foods</div>
+    <div class="grid-item">Avoid industrial pollutants</div>
+  </div>
+
+  <div style="text-align:center;">
+    <button onclick="showAlert()">Click for Lung Care Tips</button>
+  </div>
+
+  <div class="grid-long-section" id="resources">
+    <div class="grid-box">
+      <h3>How Pollution Affects Your Lungs</h3>
+      <ul>
+        <li>Fine particulate matter (PM2.5) can enter lungs and bloodstream</li>
+        <li>Causes inflammation and reduces lung function</li>
+        <li>Vulnerable groups: children, elderly, people with lung diseases</li>
+        <li>Monitor local air quality regularly</li>
+        <li>Limit outdoor activity during high pollution periods</li>
+      </ul>
+    </div>
+    <div class="grid-box">
+      <h3>Healthy Habits for Stronger Lungs</h3>
+      <ul>
+        <li>Practice yoga and diaphragmatic breathing</li>
+        <li>Exercise regularly: walking, jogging, cycling</li>
+        <li>Eat anti-inflammatory foods like ginger, turmeric, and berries</li>
+        <li>Stay hydrated and manage stress</li>
+      </ul>
+    </div>
+    <div class="grid-box">
+      <h3>When to See a Doctor</h3>
+      <ul>
+        <li>Persistent cough or wheezing</li>
+        <li>Shortness of breath or chest pain</li>
+        <li>Fatigue that doesn't improve</li>
+        <li>Early checkups prevent serious complications</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showAlert() {
+      alert("Take care of your lungs! Avoid smoking, exercise regularly, and get routine checkups.");
+    }
+
+
+  </script>
+</body>
+</html>

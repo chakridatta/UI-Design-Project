@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brain Disorders Information</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f3e5f5, #e0f7fa);
+      color: #333;
+    }
+
+    header {
+      background-color: #512da8;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .disorder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .disorder-box {
+      background-color: #ede7f6;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .disorder-box:hover {
+      background-color: #d1c4e9;
+    }
+
+    .disorder-box h3 {
+      color: #311b92;
+    }
+
+    .info-section {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .info-section h2 {
+      color: #4a148c;
+      margin-bottom: 15px;
+    }
+
+    .info-section ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .info-section ul li {
+      margin-bottom: 10px;
+    }
+
+    #messageBox {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Brain Disorders</h1>
+    <p>Click on a disorder to see its cause. Double-click for precautions.</p>
+  </header>
+
+  <div class="container">
+    <div class="disorder-grid">
+      <div class="disorder-box" onclick="showAlzheimer()" ondblclick="precautionAlzheimer()">
+        <h3>Alzheimer's</h3>
+        <p>Progressive memory loss and confusion</p>
+      </div>
+      <div class="disorder-box" onclick="showParkinson()" ondblclick="precautionParkinson()">
+        <h3>Parkinson's</h3>
+        <p>Tremors and difficulty with movement</p>
+      </div>
+      <div class="disorder-box" onclick="showEpilepsy()" ondblclick="precautionEpilepsy()">
+        <h3>Epilepsy</h3>
+        <p>Recurring seizures due to abnormal brain activity</p>
+      </div>
+      <div class="disorder-box" onclick="showStroke()" ondblclick="precautionStroke()">
+        <h3>Stroke</h3>
+        <p>Brain damage from disrupted blood flow</p>
+      </div>
+      <div class="disorder-box" onclick="showDepression()" ondblclick="precautionDepression()">
+        <h3>Depression</h3>
+        <p>Persistent sadness and lack of interest</p>
+      </div>
+    </div>
+
+    <div id="messageBox" class="info-section" style="display: none;">
+      <h2 id="messageTitle"></h2>
+      <p id="messageText"></p>
+    </div>
+
+    <div class="info-section">
+      <h2>Causes of Brain Disorders</h2>
+      <ul>
+        <li>Genetic mutations or family history</li>
+        <li>Infections such as meningitis or encephalitis</li>
+        <li>Traumatic brain injuries</li>
+        <li>Substance abuse or alcohol dependency</li>
+        <li>Stroke or lack of oxygen to the brain</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Prevention Methods</h2>
+      <ul>
+        <li>Healthy diet rich in omega-3 and antioxidants</li>
+        <li>Regular exercise and mental stimulation</li>
+        <li>Avoid head injuries – wear helmets and seatbelts</li>
+        <li>Stress management and good sleep hygiene</li>
+        <li>Routine medical checkups</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Common Medications</h2>
+      <ul>
+        <li>Donepezil and Rivastigmine for Alzheimer's</li>
+        <li>Levodopa for Parkinson's disease</li>
+        <li>Valproate and Carbamazepine for epilepsy</li>
+        <li>SSRIs and SNRIs for depression and anxiety</li>
+        <li>Anticoagulants like aspirin for stroke prevention</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showAlzheimer() {
+      document.getElementById("messageTitle").textContent = "Cause of Alzheimer's";
+      document.getElementById("messageText").textContent = "Age, genetics (APOE gene), head trauma, and lifestyle factors.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function precautionAlzheimer() {
+      document.getElementById("messageTitle").textContent = "Precaution for Alzheimer's";
+      document.getElementById("messageText").textContent = "Regular mental exercise, heart-healthy diet, and managing blood pressure.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function showParkinson() {
+      document.getElementById("messageTitle").textContent = "Cause of Parkinson's";
+      document.getElementById("messageText").textContent = "Loss of dopamine-producing neurons, genetics, and environmental toxins.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function precautionParkinson() {
+      document.getElementById("messageTitle").textContent = "Precaution for Parkinson's";
+      document.getElementById("messageText").textContent = "Engage in regular physical activity, eat a healthy diet, and avoid exposure to toxins.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function showEpilepsy() {
+      document.getElementById("messageTitle").textContent = "Cause of Epilepsy";
+      document.getElementById("messageText").textContent = "Brain injury, stroke, infections, or genetic conditions.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function precautionEpilepsy() {
+      document.getElementById("messageTitle").textContent = "Precaution for Epilepsy";
+      document.getElementById("messageText").textContent = "Take medications as prescribed, avoid triggers like flashing lights, and maintain regular sleep.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function showStroke() {
+      document.getElementById("messageTitle").textContent = "Cause of Stroke";
+      document.getElementById("messageText").textContent = "Blocked artery (ischemic) or leaking blood vessel (hemorrhagic).";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function precautionStroke() {
+      document.getElementById("messageTitle").textContent = "Precaution for Stroke";
+      document.getElementById("messageText").textContent = "Control blood pressure, don’t smoke, eat healthy, and stay active.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function showDepression() {
+      document.getElementById("messageTitle").textContent = "Cause of Depression";
+      document.getElementById("messageText").textContent = "Chemical imbalances in the brain, trauma, chronic stress, or genetics.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+
+    function precautionDepression() {
+      document.getElementById("messageTitle").textContent = "Precaution for Depression";
+      document.getElementById("messageText").textContent = "Maintain good sleep, manage stress, stay socially active, and exercise regularly.";
+      document.getElementById("messageBox").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

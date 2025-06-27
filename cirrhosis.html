@@ -1,0 +1,219 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cirrhosis Disease | HealthHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6a1b9a;
+      --accent: #f3e5f5;
+      --light: #fafafa;
+      --dark: #2c2c2c;
+      --shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #9c27b0);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      animation: fadeSlideDown 1s ease;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      animation: fadeIn 1.5s ease;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: transform 0.5s ease;
+    }
+    iframe:hover {
+      transform: scale(1.02);
+    }
+    .decorated-box {
+      background: linear-gradient(to right, #f3e5f5, #e1bee7);
+      padding: 1.5rem;
+      border-left: 6px solid var(--primary);
+      margin-top: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .interactive-frame {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .left-panel {
+      flex: 1;
+      background: #ede7f6;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .left-panel button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .left-panel button:hover {
+      background: #4a0072;
+    }
+    .right-panel {
+      flex: 2;
+      background: #f3e5f5;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    .right-panel h3 {
+      margin-bottom: 1rem;
+      color: #6a1b9a;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(106, 27, 154, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(106, 27, 154, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(106, 27, 154, 0); }
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #4a0072;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-disease"></i> Cirrhosis Disease</h1>
+    <p>Learn about symptoms, causes, prevention and more through dynamic content</p>
+  </header>
+
+  <div class="container">
+    <h2>What is Cirrhosis?</h2>
+    <p>Cirrhosis is a late stage of scarring (fibrosis) of the liver caused by many forms of liver diseases and conditions, such as hepatitis and chronic alcoholism.</p>
+
+    <div class="decorated-box">
+      <h3>Key Symptoms:</h3>
+      <ul>
+        <li>Fatigue and weakness</li>
+        <li>Easy bruising and bleeding</li>
+        <li>Swelling in legs, feet, or abdomen</li>
+        <li>Jaundice (yellowing of skin and eyes)</li>
+        <li>Confusion or drowsiness (due to toxins in the brain)</li>
+      </ul>
+    </div>
+
+    <h2>Interactive Cirrhosis Topics</h2>
+    <div class="interactive-frame">
+      <div class="left-panel">
+        <button onclick="showContent('causes')">Causes</button>
+        <button onclick="showContent('treatment')">Treatment</button>
+        <button onclick="showContent('diet')">Diet Tips</button>
+      </div>
+      <div class="right-panel" id="contentBox">
+        <h3>Welcome to Cirrhosis Info Panel</h3>
+        <p>Select a topic on the left to learn more.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 HealthHub | Fighting Liver Disease with Awareness
+  </footer>
+
+  <script>
+    function showContent(topic) {
+      const contentBox = document.getElementById('contentBox');
+      let content = '';
+
+      if (topic === 'causes') {
+        content = `
+          <h3>Causes of Cirrhosis</h3>
+          <ul>
+            <li>Chronic alcohol abuse</li>
+            <li>Hepatitis B and C infections</li>
+            <li>Nonalcoholic fatty liver disease (NAFLD)</li>
+            <li>Autoimmune liver disease</li>
+            <li>Genetic disorders like Wilson’s disease</li>
+          </ul>`;
+      } else if (topic === 'treatment') {
+        content = `
+          <h3>Treatment Options</h3>
+          <ul>
+            <li>Address underlying causes (e.g., stop alcohol, treat hepatitis)</li>
+            <li>Medications to reduce liver inflammation</li>
+            <li>Lifestyle changes and diet control</li>
+            <li>Regular monitoring and blood tests</li>
+            <li>Liver transplant in severe cases</li>
+          </ul>`;
+      } else if (topic === 'diet') {
+        content = `
+          <h3>Diet Tips for Cirrhosis Patients</h3>
+          <ul>
+            <li>Limit salt to reduce fluid retention</li>
+            <li>Eat small, frequent meals</li>
+            <li>Increase lean protein and vegetables</li>
+            <li>Avoid raw seafood and alcohol</li>
+            <li>Consult a registered dietitian</li>
+          </ul>`;
+      }
+
+      contentBox.innerHTML = content;
+    }
+  </script>
+</body>
+</html>

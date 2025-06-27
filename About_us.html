@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HealthHub Medical Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a7f62;
+            --secondary: #50c878;
+            --accent: #ff6b6b;
+            --light: #f0fff4;
+            --dark: #05668d;
+            --text: #333;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        /* Header with animated gradient */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main content */
+        .about-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .hero-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 400px;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Mission section */
+        .mission-section {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .mission-section h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-section p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Team section */
+        .team-section {
+            margin: 4rem 0;
+        }
+        
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info p {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Stats section */
+        .stats-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 12px;
+        }
+        
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #034a70);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                height: 350px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>About HealthHub</h1>
+            <p>Learn about our mission, team, and commitment to your health</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i> HealthHub
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="services.html">Services</a>
+                <a href="resources.html">Resources</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="about-container">
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="hero-content">
+                <h2>Your Trusted Partner in Health Education</h2>
+                <p>Founded in 2015, HealthHub has grown from a small health blog to a comprehensive medical resource platform serving millions of users worldwide. Our journey began with a simple goal: to make reliable health information accessible to everyone.</p>
+                <p>Today, we're proud to be a leading source of medical knowledge, helping people understand and manage their health conditions through evidence-based information.</p>
+                <button id="learnMoreBtn" class="cta-button">Our Story</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Medical team discussing">
+            </div>
+        </section>
+        
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>To empower individuals with accurate, accessible, and actionable health information that improves lives and strengthens communities.</p>
+            <p>We believe that knowledge is the first step toward better health outcomes, and we're committed to breaking down complex medical information into clear, understandable content.</p>
+        </section>
+        
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Expert Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Sarah Johnson">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Chief Medical Officer</p>
+                        <p>Board-certified in Internal Medicine with 15 years of clinical experience.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Michael Chen">
+                    </div>
+                    <div class="team-info">
+                        <h3>Michael Chen</h3>
+                        <p>Director of Health Education</p>
+                        <p>MPH with expertise in health communication and patient education.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dr. Alicia Rodriguez">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Alicia Rodriguez</h3>
+                        <p>Senior Medical Editor</p>
+                        <p>MD with specialization in Endocrinology and Diabetes care.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="yearsCounter">0</div>
+                    <div class="stat-label">Years Serving Patients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="visitorsCounter">0</div>
+                    <div class="stat-label">Monthly Visitors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="conditionsCounter">0</div>
+                    <div class="stat-label">Conditions Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="expertsCounter">0</div>
+                    <div class="stat-label">Medical Experts</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-shield-alt value-icon"></i>
+                    <h3>Accuracy</h3>
+                    <p>All content is reviewed by medical professionals and based on current evidence.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart value-icon"></i>
+                    <h3>Compassion</h3>
+                    <p>We approach every health topic with empathy and understanding.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb value-icon"></i>
+                    <h3>Innovation</h3>
+                    <p>Continuously improving how we deliver health information.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-globe value-icon"></i>
+                    <h3>Accessibility</h3>
+                    <p>Making complex medical information understandable for all.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>HealthHub</h3>
+                <p>Your trusted source for reliable, up-to-date health information and medical resources.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="resources.html">Health Resources</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Health Topics</h3>
+                <ul class="footer-links">
+                    <li><a href="diabetes.html">Diabetes</a></li>
+                    <li><a href="heart.html">Heart Health</a></li>
+                    <li><a href="mental.html">Mental Health</a></li>
+                    <li><a href="skin.html">Skin Conditions</a></li>
+                    <li><a href="covid.html">COVID-19</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Medical Way, Boston, MA 02115</p>
+                <p><i class="fas fa-phone"></i> (800) 555-HEALTH</p>
+                <p><i class="fas fa-envelope"></i> info@healthhub.com</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 HealthHub Medical Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Counter animation
+        function animateCounter(elementId, targetNumber, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const startNumber = 0;
+            const increment = targetNumber / (duration / 16); // 60fps
+            
+            let currentNumber = startNumber;
+            const timer = setInterval(() => {
+                currentNumber += increment;
+                if (currentNumber >= targetNumber) {
+                    clearInterval(timer);
+                    currentNumber = targetNumber;
+                }
+                element.textContent = Math.floor(currentNumber).toLocaleString();
+            }, 16);
+        }
+        
+        // Initialize counters when stats section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('yearsCounter', 8);
+                    animateCounter('visitorsCounter', 1250000);
+                    animateCounter('conditionsCounter', 50);
+                    animateCounter('expertsCounter', 24);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.stats-section'));
+        
+        // Learn more button animation
+        document.getElementById('learnMoreBtn').addEventListener('click', function() {
+            const teamSection = document.querySelector('.team-section');
+            teamSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Add pulse animation to team section
+            teamSection.style.animation = 'pulse 1s';
+            setTimeout(() => {
+                teamSection.style.animation = '';
+            }, 1000);
+        });
+        
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Mobile menu toggle (would need HTML button added)
+        // document.querySelector('.menu-toggle').addEventListener('click', function() {
+        //     document.querySelector('.nav-links').classList.toggle('active');
+        // });
+    </script>
+</body>
+</html>

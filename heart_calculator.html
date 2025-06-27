@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Calculator | HealthHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f4f9f4, #e0f7f1);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #05668d, #028090);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    h2 {
+      color: #05668d;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background: #50c878;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #3ea566;
+    }
+    .result {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #028090;
+      padding: 1rem;
+      background: #e0f2f1;
+      border-left: 5px solid #028090;
+      border-radius: 8px;
+    }
+    .icon {
+      margin-right: 8px;
+      color: #50c878;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-heartbeat icon"></i> Heart Disease Risk Calculator</h1>
+    <p>Get a quick estimate of your risk level based on your lifestyle and health data</p>
+  </header>
+
+  <div class="container">
+    <h2>Enter Your Information</h2>
+    <label for="age">Age</label>
+    <input type="number" id="age" placeholder="e.g. 45" />
+
+    <label for="gender">Gender</label>
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <label for="smoke">Do you smoke?</label>
+    <select id="smoke">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <label for="bp">Blood Pressure (mm Hg)</label>
+    <input type="number" id="bp" placeholder="e.g. 145" />
+
+    <label for="chol">Cholesterol Level (mg/dL)</label>
+    <input type="number" id="chol" placeholder="e.g. 210" />
+
+    <button onclick="calculateHeartRisk()">Calculate Risk</button>
+    <div class="result" id="heartResult"></div>
+  </div>
+
+  <script>
+    function calculateHeartRisk() {
+      const age = parseInt(document.getElementById("age").value);
+      const smoke = document.getElementById("smoke").value;
+      const bp = parseInt(document.getElementById("bp").value);
+      const chol = parseInt(document.getElementById("chol").value);
+
+      let riskScore = 0;
+      if (age > 45) riskScore += 1;
+      if (smoke === "yes") riskScore += 2;
+      if (bp > 140) riskScore += 2;
+      if (chol > 200) riskScore += 2;
+
+      let message = "<i class='fas fa-heart icon'></i> Estimated Risk Level: <strong>Low</strong>. Keep up the healthy lifestyle!";
+      if (riskScore >= 3) message = "<i class='fas fa-heartbeat icon'></i> Estimated Risk Level: <strong>Moderate</strong>. Consider consulting a physician.";
+      if (riskScore >= 5) message = "<i class='fas fa-heart-crack icon'></i> Estimated Risk Level: <strong>High</strong>. Immediate medical attention recommended.";
+
+      document.getElementById("heartResult").innerHTML = message;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liver Health Awareness | HealthHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #7e57c2;
+      --accent: #e1bee7;
+      --bg: #f3f1f9;
+      --dark: #333;
+      --shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+    }
+    header {
+      background: linear-gradient(to right, var(--primary), #9575cd);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      font-size: 2.8rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .main-content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    .intro {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    .intro h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .intro p {
+      line-height: 1.7;
+    }
+    .flexbox-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      background-color:blue;
+    }
+    .flex-item {
+      background: yellow;
+      flex: 1 1 300px;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .flex-item h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .flex-item p {
+      flex-grow: 1;
+    }
+    .flex-item a {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .flex-item a:hover {
+      background: #5e35b1;
+    }
+
+    footer {
+      background: #7e57c2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .main-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1> Liver Health Awareness</h1>
+    <p>Understanding, Preventing & Managing Liver Conditions</p>
+  </header>
+
+  <main class="main-content">
+    <section class="intro">
+      <h2>Why Liver Health Matters</h2>
+      <p>
+        The liver is a vital organ responsible for detoxification, digestion, and metabolism. It stores essential nutrients, breaks down harmful substances, and supports immune function. Poor liver health can lead to serious consequences such as liver failure, cancer, or death. With rising lifestyle diseases and substance abuse, it’s crucial to educate yourself and act early.
+      </p>
+    </section>
+
+    <section class="flexbox-grid">
+      <div class="flex-item">
+        <h3>Hepatitis (A, B, C)</h3>
+        <p>
+          Hepatitis is an inflammation of the liver caused by viral infection. Types A, B, and C affect people differently, but all can cause long-term damage if not treated.
+        </p>
+        <a href="hepatitis.html" target="_blank">Explore Hepatitis</a>
+      </div>
+
+      <div class="flex-item">
+        <h3>Cirrhosis</h3>
+        <p>
+          Cirrhosis results from long-term damage that scars the liver. It may come from chronic hepatitis, alcohol abuse, or fatty liver disease. Prevention is possible with timely action.
+        </p>
+        <a href="cirrhosis.html" target="_blank">Explore Cirrhosis</a>
+      </div>
+
+      <div class="flex-item">
+        <h3>Alcohol-Related Damage</h3>
+        <p>
+          Excessive alcohol use can lead to liver inflammation, fatty liver, and permanent scarring. Learn how to detect symptoms early and reverse some of the damage.
+        </p>
+        <a href="alcohol.html" target="_blank">Explore Alcohol Effects</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 HealthHub | Promoting Preventive Liver Care
+  </footer>
+</body>
+</html>

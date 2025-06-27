@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Care Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00a896;
+            --secondary: #02c39a;
+            --accent: #ff6b6b;
+            --light: #f0f3f5;
+            --dark: #05668d;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            text-align: center;
+            position: relative;
+            
+        }
+        
+        .header-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            margin-top: 2rem;
+        }
+        
+        .nav-tabs {
+            display: inline-flex;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-tabs a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        
+        .diabetes-hero {
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .diabetes-content {
+            max-width: 1100px;
+            margin: -50px auto 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .section-title {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-card {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .card-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .diabetes-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .diabetes-table th {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .diabetes-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .diabetes-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .diabetes-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .diabetes-table tr:hover {
+            background-color: #f0faf7;
+        }
+        
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #034a70);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .social-link.facebook {
+            background: #3b5998;
+        }
+        
+        .social-link.twitter {
+            background: #1da1f2;
+        }
+        
+        .social-link.instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+        
+        .social-link.youtube {
+            background: #ff0000;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .diabetes-content {
+                padding: 1.5rem;
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .resource-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-hand-holding-medical"></i> Diabetes Care Guide</h1>
+            <p>Comprehensive information and resources for diabetes management and prevention</p>
+            
+            <div class="nav-container">
+                <div class="nav-tabs">
+                    <a href="practice_website.html" class="active"><i class="fas fa-home"></i> Home</a>
+                    <a href="#types"><i class="fas fa-notes-medical"></i> Types</a>
+                    <a href="#prevention"><i class="fas fa-shield-alt"></i> Prevention</a>
+                    <a href="#resources"><i class="fas fa-book-medical"></i> Resources</a>
+                    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="diabetes-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Empowering You to Manage Diabetes</h2>
+            <p>Evidence-based information to help you understand and control your diabetes</p>
+        </div>
+    </div>
+    
+    <main class="diabetes-content">
+        <section id="overview">
+            <h2 class="section-title">Understanding Diabetes</h2>
+            <p>Diabetes is a chronic metabolic disorder characterized by elevated levels of blood glucose (blood sugar) that leads over time to serious damage to the heart, blood vessels, eyes, kidneys, and nerves.</p>
+            
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle card-icon"></i> Diabetes Facts</h3>
+                <p>According to the World Health Organization, about 422 million people worldwide have diabetes, particularly in low-and middle-income countries, and 1.5 million deaths are directly attributed to diabetes each year.</p>
+            </div>
+        </section>
+        
+        <section id="types">
+            <h2 class="section-title">Types of Diabetes</h2>
+            <table class="diabetes-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Prevalence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Type 1 Diabetes</strong></td>
+                        <td>Autoimmune condition where the pancreas produces little or no insulin. Requires daily insulin administration.</td>
+                        <td>5-10% of cases</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type 2 Diabetes</strong></td>
+                        <td>Body becomes resistant to insulin or doesn't produce enough. Often related to lifestyle factors.</td>
+                        <td>90-95% of cases</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gestational Diabetes</strong></td>
+                        <td>Develops during pregnancy and usually disappears after giving birth. Increases risk of type 2 diabetes later.</td>
+                        <td>2-10% of pregnancies</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="warning-card">
+                <h3><i class="fas fa-exclamation-triangle card-icon"></i> Diabetes Warning Signs</h3>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Increased thirst and frequent urination</li>
+                    <li>Extreme hunger and fatigue</li>
+                    <li>Blurred vision</li>
+                    <li>Slow-healing sores or frequent infections</li>
+                    <li>Unexplained weight loss (Type 1)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="prevention">
+            <h2 class="section-title">Prevention & Management</h2>
+            <table class="diabetes-table">
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Recommendation</th>
+                        <th>Benefits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Healthy Eating</strong></td>
+                        <td>Focus on vegetables, whole grains, lean protein. Limit processed foods and sugary drinks.</td>
+                        <td>Better blood sugar control, weight management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Physical Activity</strong></td>
+                        <td>150 minutes moderate exercise weekly (e.g., brisk walking)</td>
+                        <td>Improves insulin sensitivity, lowers blood sugar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weight Management</strong></td>
+                        <td>Lose 5-10% of body weight if overweight</td>
+                        <td>Reduces diabetes risk by 58%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regular Monitoring</strong></td>
+                        <td>Check blood sugar as recommended by your doctor</td>
+                        <td>Early detection of problems, better control</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stress Reduction</strong></td>
+                        <td>Practice mindfulness, meditation, or yoga</td>
+                        <td>Lowers stress hormones that raise blood sugar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="resources">
+            <h2 class="section-title">Helpful Resources</h2>
+            <div class="resource-list">
+                <div class="resource-card">
+                    <h4>American Diabetes Association</h4>
+                    <p>Comprehensive diabetes information, recipes, and lifestyle tips.</p>
+                    <a href="https://www.diabetes.org/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="resource-card">
+                    <h4>Diabetes Education Online</h4>
+                    <p>Interactive learning tools from UCSF Medical Center.</p>
+                    <a href="https://dtc.ucsf.edu/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="resource-card">
+                    <h4>MySugar Diabetes App</h4>
+                    <p>Popular app for tracking blood sugar, medication, and food.</p>
+                    <a href="https://mysugr.com/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Have questions about diabetes management? Our healthcare professionals are here to help.</p>
+            <button style="background: linear-gradient(to right, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 24px; border-radius: 50px; font-weight: 600; margin-top: 1rem; cursor: pointer; transition: all 0.3s ease;">
+                <i class="fas fa-envelope"></i> Contact Our Diabetes Team
+            </button>
+        </section>
+    </main>
+    
+    <div class="floating-btn" title="Need Help?">
+        <i class="fas fa-comment-medical"></i>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Diabetes Care Guide. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank" class="social-link facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/" target="_blank" class="social-link twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-link instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/" target="_blank" class="social-link youtube" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

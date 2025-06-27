@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarePath : MedWeb</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2a9d8f;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 3em;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #21867a;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      background-color: #3bb6a3;
+      transition: all 0.3s ease;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      background-color: #61d6c2;
+      font-weight: bold;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 40px 20px;
+    }
+
+    .container {
+      display: flex;
+      min-height: 400px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .image-section {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .medical-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .container:hover .medical-image {
+      transform: scale(1.05);
+    }
+
+    .text-section {
+      flex: 1;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+
+    .text-content {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .text-section h2 {
+      color: #2a6496;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .text-section p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .small-flex-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+    }
+
+    .small-flexbox {
+      flex: 1;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      min-width: 200px;
+      cursor: pointer;
+    }
+
+    .small-flexbox a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .small-flexbox img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .small-flexbox:hover img {
+      transform: scale(1.05);
+    }
+
+    .small-flexbox:hover {
+      background-color: #e6f1f8;
+      transform: scale(1.03);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      background-color: #2a9d8f;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container, .small-flex-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .small-flexbox {
+        width: 90%;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      nav a {
+        width: 90%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    CarePath : Medical Problems and solutions
+  </header>
+
+  <nav>
+    <a href="About_us_2.html">About Us</a>
+    <a href="contact_us.html">Contact Us</a>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="image-section">
+        <a href="page3.html">
+          <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Medical" class="medical-image" />
+        </a>
+      </div>
+      <div class="text-section">
+        <div class="text-content">
+          <h2>Quality Healthcare Services</h2>
+          <p>Our medical center provides comprehensive healthcare services with state-of-the-art technology and experienced professionals. We prioritize patient care and wellness through innovative treatments and personalized care plans.</p>
+          <p>From routine check-ups to specialized treatments, our team is dedicated to ensuring your health and well-being at every stage of life.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-flex-container">
+      <div class="small-flexbox" onclick="window.location.href='Diabetes.html'">
+        <a href="Diabetes.html">
+          <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=80" alt="Diabetes">
+          <h3>Diabetes Care</h3>
+          <p>Comprehensive diabetes management and prevention</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='Liver_health.html'">
+        <a href="Liver_health.html">
+          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80" alt="Liver Health">
+          <h3>Liver Health</h3>
+          <p>Maintaining and improving liver function</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='endocrine.html'">
+        <a href="endocrine.html">
+          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=800&q=80" alt="Endocrine System">
+          <h3>Endocrine Health</h3>
+          <p>Hormonal balance and glandular health</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='Mental_state.html'">
+        <a href="Mental_state.html">
+          <img src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&fit=crop&w=800&q=80" alt="Mental Health">
+          <h3>Mental Health</h3>
+          <p>Support for emotional and psychological well-being</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='skin_diseases.html'">
+        <a href="skin_diseases.html">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="Skin Diseases">
+          <h3>Skin Diseases</h3>
+          <p>Diagnosis and treatment of dermatological conditions</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='calcium_joint.html'">
+        <a href="calcium_joint.html">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Bone and Joint Health">
+          <h3>Calcium & Joints</h3>
+          <p>Bone strength and joint mobility solutions</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='page2.html'">
+        <a href="page2.html">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80" alt="Health Calculators">
+          <h3>Health Calculators</h3>
+          <p>Tools to calculate BMI, calorie needs, and more</p>
+        </a>
+      </div>
+      <div class="small-flexbox" onclick="window.location.href='page4.html'">
+        <a href="page4.html">
+          <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80" alt="Yoga Harmony">
+          <h3>Yoga Harmony</h3>
+          <p>Yoga routines for physical and mental well-being</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="image-section">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee4e?auto=format&fit=crop&w=1350&q=80" alt="Medical Team" class="medical-image" />
+      </div>
+      <div class="text-section">
+        <div class="text-content">
+          <h2>Our Commitment to Care</h2>
+          <p>We believe in treating the whole person, not just the condition. Our patient-centered approach ensures you receive compassionate care tailored to your individual needs.</p>
+          <p>Contact us today to schedule an appointment or learn more about our services and facilities.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MedWeb. All rights reserved.</p>
+    <p>123 Medical Drive, Health City, HC 12345 | Phone: (555) 123-4567</p>
+  </footer>
+</body>
+</html>

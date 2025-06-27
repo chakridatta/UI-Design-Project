@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Health Awareness | Dermatology Care Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #8e6c88;
+      --secondary: #b58db6;
+      --accent: #e6af4b;
+      --light: #f9f5f9;
+      --dark: #4a3e4a;
+      --text: #333333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--dark), var(--primary));
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 0.8s ease;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .nav-container {
+      margin-top: 2rem;
+    }
+    
+    .nav-tabs {
+      display: inline-flex;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .nav-tabs a {
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-tabs a:hover, .nav-tabs a.active {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    
+    .skin-hero {
+      height: 400px;
+      background: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+    
+    .skin-content {
+      max-width: 1100px;
+      margin: -80px auto 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      padding: 3rem;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .section-title {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .info-card {
+      background: #f8f4f8;
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .warning-card {
+      background: #fff8f0;
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .card-icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .skin-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 2rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .skin-table th {
+      background: linear-gradient(to right, var(--dark), var(--primary));
+      color: white;
+      padding: 1.2rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .skin-table td {
+      padding: 1.2rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .skin-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .skin-table tr:nth-child(even) {
+      background-color: #faf5fa;
+    }
+    
+    .skin-table tr:hover {
+      background-color: #f5eef5;
+    }
+    
+    .skin-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .skin-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .skin-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skin-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .skin-card h4 {
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .resource-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    footer {
+      background: linear-gradient(135deg, var(--dark), #3a2e3a);
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+    
+    .social-links {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    .social-link {
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+    
+    .social-link.facebook {
+      background: #3b5998;
+    }
+    
+    .social-link.twitter {
+      background: #1da1f2;
+    }
+    
+    .social-link.instagram {
+      background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+    
+    .social-link.youtube {
+      background: #ff0000;
+    }
+    
+    .floating-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 100;
+    }
+    
+    .floating-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .nav-tabs {
+        flex-direction: column;
+        border-radius: 10px;
+      }
+      
+      .skin-content {
+        padding: 1.5rem;
+        margin-top: 0;
+        border-radius: 0;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1><i class="fas fa-spa"></i> Skin Health Awareness</h1>
+      <p>Comprehensive dermatology information for healthy, radiant skin at every age</p>
+      
+      <div class="nav-container">
+        <div class="nav-tabs">
+          <a href="#about" class="active"><i class="fas fa-info-circle"></i> About</a>
+          <a href="#conditions"><i class="fas fa-allergies"></i> Conditions</a>
+          <a href="#prevention"><i class="fas fa-shield-alt"></i> Prevention</a>
+          <a href="#treatments"><i class="fas fa-prescription-bottle-alt"></i> Treatments</a>
+          <a href="#resources"><i class="fas fa-book-medical"></i> Resources</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="skin-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h2>Your Skin Health Journey Starts Here</h2>
+      <p>Evidence-based dermatology information to help you understand and care for your skin</p>
+    </div>
+  </div>
+  
+  <main class="skin-content">
+    <section id="about">
+      <h2 class="section-title">Understanding Skin Health</h2>
+      <p>Your skin is the body's largest organ, serving as a protective barrier against environmental hazards while regulating temperature and providing sensory information. Maintaining skin health is essential for overall wellbeing and quality of life.</p>
+      
+      <div class="info-card">
+        <h3><i class="fas fa-lightbulb card-icon"></i> Did You Know?</h3>
+        <p>The average adult's skin spans 22 square feet and weighs about 8 pounds. Skin renews itself approximately every 28 days, with new skin cells forming in the deepest layer and gradually rising to the surface.</p>
+      </div>
+      
+      <div class="skin-gallery">
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1556228578-3f9d7fc2592c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Skin Layers">
+          <h4>Skin Anatomy</h4>
+          <p>Learn about the epidermis, dermis, and subcutaneous tissue that make up your skin's structure.</p>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1583945490884-68b40329a048?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Skin Care">
+          <h4>Daily Care</h4>
+          <p>Essential routines for maintaining healthy skin throughout your life.</p>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Skin Protection">
+          <h4>Sun Protection</h4>
+          <p>Why UV protection is crucial for preventing premature aging and skin cancer.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="conditions">
+      <h2 class="section-title">Common Skin Conditions</h2>
+      <table class="skin-table">
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th>Description</th>
+            <th>Prevalence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Acne</strong></td>
+            <td>Occurs when hair follicles become clogged with oil and dead skin cells</td>
+            <td>Affects 85% of people aged 12-24</td>
+          </tr>
+          <tr>
+            <td><strong>Eczema</strong></td>
+            <td>Inflammatory condition causing itchy, red, and dry skin</td>
+            <td>10-20% of children, 1-3% of adults</td>
+          </tr>
+          <tr>
+            <td><strong>Psoriasis</strong></td>
+            <td>Autoimmune disease causing rapid skin cell buildup</td>
+            <td>2-3% of population</td>
+          </tr>
+          <tr>
+            <td><strong>Rosacea</strong></td>
+            <td>Chronic inflammatory condition primarily affecting the face</td>
+            <td>~16 million Americans</td>
+          </tr>
+          <tr>
+            <td><strong>Skin Cancer</strong></td>
+            <td>Abnormal growth of skin cells, often from sun exposure</td>
+            <td>1 in 5 Americans by age 70</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="warning-card">
+        <h3><i class="fas fa-exclamation-triangle card-icon"></i> When to See a Dermatologist</h3>
+        <ul style="margin-left: 1.5rem;">
+          <li>Moles that change size, shape, or color</li>
+          <li>Persistent skin rashes or irritation</li>
+          <li>Severe acne that doesn't respond to over-the-counter treatments</li>
+          <li>Unexplained skin growths or lesions</li>
+          <li>Chronic skin conditions affecting quality of life</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="prevention">
+      <h2 class="section-title">Skin Health Prevention</h2>
+      <table class="skin-table">
+        <thead>
+          <tr>
+            <th>Strategy</th>
+            <th>Recommendation</th>
+            <th>Benefits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sun Protection</strong></td>
+            <td>Use broad-spectrum SPF 30+ daily, seek shade 10am-4pm</td>
+            <td>Prevents 90% of skin aging, reduces cancer risk</td>
+          </tr>
+          <tr>
+            <td><strong>Gentle Cleansing</strong></td>
+            <td>Use lukewarm water, pH-balanced cleansers</td>
+            <td>Maintains skin barrier, prevents irritation</td>
+          </tr>
+          <tr>
+            <td><strong>Hydration</strong></td>
+            <td>Drink 8 glasses water daily, use humectant moisturizers</td>
+            <td>Improves elasticity, reduces fine lines</td>
+          </tr>
+          <tr>
+            <td><strong>Healthy Diet</strong></td>
+            <td>Antioxidant-rich foods (berries, leafy greens, nuts)</td>
+            <td>Fights free radicals, supports collagen</td>
+          </tr>
+          <tr>
+            <td><strong>Stress Management</strong></td>
+            <td>Meditation, adequate sleep, regular exercise</td>
+            <td>Reduces inflammatory skin conditions</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <section id="treatments">
+      <h2 class="section-title">Common Skin Treatments</h2>
+      <div class="skin-gallery">
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1579165466741-9203325e4d78?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Topical Treatments">
+          <h4>Topical Treatments</h4>
+          <p>Creams, ointments, and serums for conditions like acne, eczema, and aging.</p>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Oral Medications">
+          <h4>Oral Medications</h4>
+          <p>Antibiotics, retinoids, and other systemic treatments for severe conditions.</p>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Procedures">
+          <h4>Clinical Procedures</h4>
+          <p>Laser therapy, chemical peels, and other dermatological procedures.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="resources">
+      <h2 class="section-title">Skin Health Resources</h2>
+      <div class="skin-gallery">
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AAD">
+          <h4>American Academy of Dermatology</h4>
+          <p>Comprehensive skin health information from board-certified dermatologists.</p>
+          <a href="https://www.aad.org/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Skin Cancer Foundation">
+          <h4>Skin Cancer Foundation</h4>
+          <p>Resources for prevention, detection, and treatment of skin cancer.</p>
+          <a href="https://www.skincancer.org/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <div class="skin-card">
+          <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="My Skin App">
+          <h4>MySkin App</h4>
+          <p>Track moles, skincare routines, and dermatology appointments.</p>
+          <a href="https://www.myskin.com/" target="_blank" class="resource-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <div class="floating-btn" title="Ask a Dermatologist">
+    <i class="fas fa-comment-medical"></i>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Skin Health Awareness. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/" target="_blank" class="social-link facebook" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/" target="_blank" class="social-link twitter" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="social-link instagram" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" class="social-link youtube" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/042/760/265/small/phone-icon-design-graphic-resource-vector.jpg">
+ <title>Contact Us - Care Path</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(90deg, #800080, #00c4b4);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info h2, .contact-form h2 {
+            color: #800080;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info p::before {
+            content: "•";
+            margin-right: 0.5rem;
+            color: #00c4b4;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #800080;
+            box-shadow: 0 0 3px rgba(128, 0, 128, 0.3);
+        }
+        .error {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+            display: none;
+        }
+        .form-group.invalid input,
+        .form-group.invalid textarea {
+            border-color: #dc3545;
+        }
+        .form-group.valid input,
+        .form-group.valid textarea {
+            border-color: #28a745;
+        }
+        button {
+            background-color: #800080;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #5a005a;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+        footer {
+            background: #800080;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .message-hint {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.2rem;
+        }
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header >
+        <h1>Care Path</h1>
+       <marque></marque><p style="overflow : auto">Contact us for support or inquiries.</p>
+    </header>
+    
+    <div class="container">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>Email: support@carepath.org</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+        
+        <div class="contact-form">
+            <h2>Reach Out to Us</h2>
+            <p>Fill out the form below to get in touch with our team.</p>
+            <form id="contactForm">
+                <div class="form-group" id="nameGroup">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <span class="error" id="nameError">Please enter a valid name (at least 4 characters, letters only).</span>
+                </div>
+                <div class="form-group" id="emailGroup">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <span class="error" id="emailError">Please enter a valid email address (e.g., user@example.com).</span>
+                </div>
+                <div class="form-group" id="messageGroup">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Please describe your inquiry in detail..." required></textarea>
+                    <div class="message-hint">
+                        <p>Please include:</p>
+                        <ul style="margin-left: 1rem;">
+                            <li>The purpose of your inquiry</li>
+                            <li>Any relevant details about your request</li>
+                            <li>Suggestions or feedback (if applicable)</li>
+                        </ul>
+                    </div>
+                    <span class="error" id="messageError">Please enter a meaningful message (at least 20 characters).</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submitBtn">Send Message</button>
+                </div>
+                <div class="success-message" id="successMessage">
+                    <strong>Thank you for your message!</strong> We'll get back to you within 24-48 hours.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Care Path. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+
+            // Real-time validation
+            nameInput.addEventListener('input', validateName);
+            emailInput.addEventListener('input', validateEmail);
+            messageInput.addEventListener('input', validateMessage);
+
+            // Form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                if (validateForm()) {
+                    // Simulate form submission
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    // In a real implementation, you would send data to a server here
+                    setTimeout(function() {
+                        console.log('Form data:', {
+                            name: nameInput.value.trim(),
+                            email: emailInput.value.trim(),
+                            message: messageInput.value.trim()
+                        });
+                        
+                        successMessage.style.display = 'block';
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                        
+                        // Reset validation states
+                        document.getElementById('nameGroup').classList.remove('valid');
+                        document.getElementById('emailGroup').classList.remove('valid');
+                        document.getElementById('messageGroup').classList.remove('valid');
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(function() {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    }, 1500);
+                }
+            });
+
+            function validateForm() {
+                const isNameValid = validateName();
+                const isEmailValid = validateEmail();
+                const isMessageValid = validateMessage();
+                
+                return isNameValid && isEmailValid && isMessageValid;
+            }
+
+            function validateName() {
+                const nameGroup = document.getElementById('nameGroup');
+                const nameError = document.getElementById('nameError');
+                const name = nameInput.value.trim();
+                const nameRegex = /^[a-zA-Z\s]{4,}$/;
+                
+                if (name === '') {
+                    showError(nameGroup, nameError, 'Name is required');
+                    return false;
+                } else if (!nameRegex.test(name)) {
+                    showError(nameGroup, nameError, 'Please enter a valid name (at least 4 characters, letters only)');
+                    return false;
+                } else {
+                    showSuccess(nameGroup);
+                    return true;
+                }
+            }
+
+            function validateEmail() {
+                const emailGroup = document.getElementById('emailGroup');
+                const emailError = document.getElementById('emailError');
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email === '') {
+                    showError(emailGroup, emailError, 'Email is required');
+                    return false;
+                } else if (!emailRegex.test(email)) {
+                    showError(emailGroup, emailError, 'Please enter a valid email address (e.g., user@example.com)');
+                    return false;
+                } else {
+                    showSuccess(emailGroup);
+                    return true;
+                }
+            }
+
+            function validateMessage() {
+                const messageGroup = document.getElementById('messageGroup');
+                const messageError = document.getElementById('messageError');
+                const message = messageInput.value.trim();
+                
+                if (message === '') {
+                    showError(messageGroup, messageError, 'Message is required');
+                    return false;
+                } else if (message.length < 20) {
+                    showError(messageGroup, messageError, 'Please enter a more detailed message (at least 20 characters)');
+                    return false;
+                } else {
+                    showSuccess(messageGroup);
+                    return true;
+                }
+            }
+
+            function showError(groupElement, errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                groupElement.classList.add('invalid');
+                groupElement.classList.remove('valid');
+            }
+
+            function showSuccess(groupElement) {
+                const errorElement = groupElement.querySelector('.error');
+                errorElement.style.display = 'none';
+                groupElement.classList.remove('invalid');
+                groupElement.classList.add('valid');
+            }
+        });
+    </script>
+</body>
+</html>

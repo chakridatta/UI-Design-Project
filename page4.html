@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony | Mental Wellness & Yoga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4a7b9d;
+            --secondary: #5d9b9b;
+            --accent: #d4a5a5;
+            --light: #f8f4e3;
+            --dark: #2c3e50;
+            --green: #7d9d9c;
+            --purple: #8a7f9e;
+            --root: #c0392b;
+            --sacral: #e67e22;
+            --solar: #f1c40f;
+            --heart: #27ae60;
+            --throat: #3498db;
+            --third-eye: #9b59b6;
+            --crown: #8e44ad;
+        }
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8f4e3 0%, #e8f0f7 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        /* REMOVED: .cta-button style is no longer needed as the buttons are removed */
+        /*
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .cta-button:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        */
+
+        /* NEW: Style for the "Home" text in the header */
+        .home-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; /* Adjust as needed to fit well */
+            font-weight: 700;
+            color: var(--primary); /* Keep the primary color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .home-link:hover {
+            color: var(--dark); /* Darker color on hover */
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)),
+                        url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1940') center/cover no-repeat;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px; /* Adjust if needed after button removal */
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* NEW: Creative Layout for Mental Health Section */
+        .mental-health-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            perspective: 1000px;
+        }
+
+        .mental-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                                box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            height: 100%;
+        }
+
+        .mental-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                rgba(255,255,255,0.1) 0%,
+                rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .card-header i {
+            font-size: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-header h3 {
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-content {
+            padding: 30px;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .card-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .card-content h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .card-content h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .card-content ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-content li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card-content li::before {
+            content: '•';
+            color: var(--accent);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+
+        .techniques {
+            background: rgba(74, 123, 157, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .techniques h5 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Yoga Section - NEW Creative Layout */
+        .yoga-section {
+            background: linear-gradient(to right, rgba(136, 162, 170, 0.05) 0%, rgba(125, 157, 156, 0.05) 100%);
+            overflow: hidden;
+        }
+
+        .yoga-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .yoga-content {
+            padding: 20px;
+        }
+
+        .yoga-content h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .yoga-content h3::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .benefit-item i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .yoga-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            height: 500px;
+            position: relative;
+            transform: rotate(-2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .yoga-image:hover {
+            transform: rotate(0deg);
+        }
+
+        .yoga-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .yoga-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .yoga-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(125, 157, 156, 0.1) 0%, rgba(125, 157, 156, 0) 100%);
+            z-index: 1;
+        }
+
+        /* Chakras Section - Enhanced with Mudras and Mantras */
+        .chakras-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .chakras-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(125, 157, 156, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .chakra-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid;
+            transform: scale(1);
+        }
+
+        .chakra-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        .chakra-card.root { border-color: var(--root); }
+        .chakra-card.sacral { border-color: var(--sacral); }
+        .chakra-card.solar { border-color: var(--solar); }
+        .chakra-card.heart { border-color: var(--heart); }
+        .chakra-card.throat { border-color: var(--throat); }
+        .chakra-card.third-eye { border-color: var(--third-eye); }
+        .chakra-card.crown { border-color: var(--crown); }
+
+        .chakra-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .chakra-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: white;
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .chakra-card:hover .chakra-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .root .chakra-icon { background: var(--root); }
+        .sacral .chakra-icon { background: var(--sacral); }
+        .solar .chakra-icon { background: var(--solar); }
+        .heart .chakra-icon { background: var(--heart); }
+        .throat .chakra-icon { background: var(--throat); }
+        .third-eye .chakra-icon { background: var(--third-eye); }
+        .crown .chakra-icon { background: var(--crown); }
+
+        .chakra-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            position: relative;
+        }
+
+        .chakra-card p {
+            margin-bottom: 15px;
+        }
+
+        /* NEW: Mudra and Mantra Section */
+        .mudra-mantra-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .mudra-container, .mantra-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mudra-diagram {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.03);
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .mudra-diagram i {
+            font-size: 24px;
+            color: inherit;
+        }
+
+        .mantra-container .mudra-diagram {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .mudra-label, .mantra-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: inherit;
+        }
+
+        .mudra-name, .mantra-syllable {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .mantra-syllable {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .root .mudra-mantra-container { color: var(--root); }
+        .sacral .mudra-mantra-container { color: var(--sacral); }
+        .solar .mudra-mantra-container { color: var(--solar); }
+        .heart .mudra-mantra-container { color: var(--heart); }
+        .throat .mudra-mantra-container { color: var(--throat); }
+        .third-eye .mudra-mantra-container { color: var(--third-eye); }
+        .crown .mudra-mantra-container { color: var(--crown); }
+
+        .activation {
+            background: rgba(0,0,0,0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: left;
+            border-left: 3px solid;
+        }
+
+        .root .activation { border-color: var(--root); }
+        .sacral .activation { border-color: var(--sacral); }
+        .solar .activation { border-color: var(--solar); }
+        .heart .activation { border-color: var(--heart); }
+        .throat .activation { border-color: var(--throat); }
+        .third-eye .activation { border-color: var(--third-eye); }
+        .crown .activation { border-color: var(--crown); }
+
+        .activation h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 20%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--root), var(--sacral), var(--solar), var(--heart), var(--throat), var(--third-eye), var(--crown));
+        }
+
+        .footer-content {
+            display: flex; /* Changed from grid to flex for simpler alignment of just social icons */
+            justify-content: center; /* Center the social icons */
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* REMOVED: footer-column styles as content is removed */
+        /*
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        */
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* NEW: Animated Background Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 165, 165, 0.1);
+            filter: blur(30px);
+            z-index: -1;
+        }
+
+        .element-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .element-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 5%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 20px) rotate(5deg); }
+            50% { transform: translate(-20px, -20px) rotate(-5deg); }
+            75% { transform: translate(20px, -20px) rotate(5deg); }
+        }
+
+        /* NEW: Section Divider */
+        .section-divider {
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, var(--primary), var(--purple));
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" fill="%23f8f4e3" opacity="0.8"/></svg>');
+            background-size: 50% 100px;
+            animation: wave 15s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation: wave 10s linear -0.125s infinite, swell 7s ease -1.25s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-25%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes swell {
+            0%, 100% { transform: translateY(-25px); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .yoga-container,
+            .benefits-grid,
+            .chakras-container,
+            .mental-health-container {
+                grid-template-columns: 1fr;
+            }
+
+            .yoga-image {
+                height: 350px;
+                order: -1;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .mudra-mantra-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            /* Adjust hero paragraph margin if needed on small screens */
+            .hero p {
+                margin-bottom: 20px;
+            }
+
+            /* Ensure footer content also adapts */
+            footer .container {
+                flex-direction: column; /* Stack social icons vertically */
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <a href="D:\UID PROJECT FILES\page1.html" class="home-link">Home</a>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h2>Harmonize Your Mind, Body & Spirit</h2>
+        <p>Discover the transformative power of yoga and mental wellness practices to balance your energy and achieve inner peace.</p>
+    </div>
+</section>
+
+<div class="section-divider">
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+
+<section id="mental-health">
+    <div class="container">
+        <div class="section-title">
+            <h2>Mental Wellness Practices</h2>
+        </div>
+
+        <div class="mental-health-container">
+            <div class="mental-card">
+                <div class="card-header">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Stress Management</h3>
+                </div>
+                <div class="card-content">
+                    <p>Chronic stress can lead to serious health issues. Effective stress management is essential for maintaining mental and physical well-being.</p>
+
+                    <h4>Key Strategies:</h4>
+                    <ul>
+                        <li>Identify your stress triggers and patterns</li>
+                        <li>Establish healthy boundaries in work and relationships</li>
+                        <li>Practice time management and prioritization</li>
+                        <li>Engage in regular physical activity</li>
+                        <li>Maintain a balanced, nutritious diet</li>
+                    </ul>
+
+                    <div class="techniques">
+                        <h5>Effective Techniques:</h5>
+                        <p><strong>Progressive Muscle Relaxation:</strong> Tense and release muscle groups systematically to reduce physical tension.</p>
+                        <p><strong>Breathing Exercises:</strong> Practice 4-7-8 breathing (inhale 4s, hold 7s, exhale 8s) to calm the nervous system.</p>
+                        <p><strong>Nature Therapy:</strong> Spend at least 20 minutes daily in natural environments to lower cortisol levels.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mental-card">
+                <div class="card-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>Mindfulness Meditation</h3>
+                </div>
+                <div class="card-content">
+                    <p>Mindfulness is the practice of being fully present and engaged in the current moment without judgment.</p>
+
+                    <h4>Benefits of Mindfulness:</h4>
+                    <ul>
+                        <li>Reduces symptoms of anxiety and depression</li>
+                        <li>Improves emotional regulation and resilience</li>
+                        <li>Enhances focus and cognitive function</li>
+                        <li>Lowers blood pressure and improves sleep</li>
+                        <li>Increases self-awareness and compassion</li>
+                    </ul>
+
+                    <div class="techniques">
+                        <h5>Meditation Practices:</h5>
+                        <p><strong>Body Scan:</strong> Systematically focus attention on different parts of the body to develop awareness.</p>
+                        <p><strong>Loving-Kindness Meditation:</strong> Cultivate compassion by directing well-wishes to yourself and others.</p>
+                        <p><strong>Walking Meditation:</strong> Practice mindfulness while walking, focusing on the sensation of movement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mental-card">
+                <div class="card-header">
+                    <i class="fas fa-hands-praying"></i>
+                    <h3>Yoga for Mental Health</h3>
+                </div>
+                <div class="card-content">
+                    <p>Yoga is a powerful mind-body practice that combines physical postures, breathing techniques, and meditation to enhance mental well-being.</p>
+
+                    <h4>Mental Health Benefits:</h4>
+                    <ul>
+                        <li>Reduces cortisol levels by up to 30%</li>
+                        <li>Increases GABA levels (calming neurotransmitter)</li>
+                        <li>Improves emotional regulation and mood</li>
+                        <li>Enhances mindfulness and present-moment awareness</li>
+                        <li>Promotes better sleep quality</li>
+                    </ul>
+
+                    <div class="techniques">
+                        <h5>Recommended Practices:</h5>
+                        <p><strong>Restorative Yoga:</strong> Gentle poses with props to activate the parasympathetic nervous system.</p>
+                        <p><strong>Pranayama:</strong> Controlled breathing exercises to balance energy and calm the mind.</p>
+                        <p><strong>Yoga Nidra:</strong> A guided meditation practice for deep relaxation and stress relief.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider">
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+
+<section class="yoga-section" id="yoga">
+    <div class="container">
+        <div class="section-title">
+            <h2>Yoga for Holistic Wellness</h2>
+        </div>
+
+        <div class="yoga-container">
+            <div class="yoga-content">
+                <h3>Transform Your Life Through Yoga</h3>
+                <p>Yoga is more than physical exercise - it's a 5,000-year-old practice that unites body, mind, and spirit. Regular practice creates balance, enhances self-awareness, and cultivates inner peace.</p>
+
+                <h4 style="margin: 25px 0 15px; color: var(--primary);">Scientific Benefits:</h4>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h5>Cardiovascular Health</h5>
+                            <p>Reduces blood pressure and improves circulation</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-lungs"></i>
+                        <div>
+                            <h5>Respiratory Function</h5>
+                            <p>Increases lung capacity and oxygenation</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <h5>Mental Clarity</h5>
+                            <p>Enhances focus and cognitive function</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-moon"></i>
+                        <div>
+                            <h5>Sleep Quality</h5>
+                            <p>Improves sleep duration and quality</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="margin: 30px 0 15px; color: var(--primary);">Yoga for Chakra Activation:</h4>
+                <p>Specific yoga poses can help activate and balance your chakras:</p>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Root Chakra:</strong> Mountain Pose, Warrior Poses</li>
+                    <li><strong>Sacral Chakra:</strong> Hip Openers, Bound Angle Pose</li>
+                    <li><strong>Heart Chakra:</strong> Camel Pose, Cobra Pose</li>
+                    <li><strong>Third Eye Chakra:</strong> Child's Pose, Forward Folds</li>
+                </ul>
+            </div>
+
+            <div class="yoga-image">
+                <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=1964" alt="Woman practicing yoga">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider">
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+
+<section id="chakras">
+    <div class="container">
+        <div class="section-title">
+            <h2>The 7 Chakras: Energy Centers</h2>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 18px;">
+            Chakras are energy centers in the subtle body that influence our physical, emotional, and spiritual well-being. Balancing these energy centers is essential for holistic health and vitality.
+        </p>
+
+        <div class="chakras-container">
+            <div class="chakra-card root">
+                <div class="chakra-icon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <h3>Root Chakra</h3>
+                <p><strong>Muladhara</strong> - Base of spine</p>
+                <p>Governs survival, security, and foundation</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--root);">
+                            <i class="fas fa-hands" title="Prithvi Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Prithvi Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--root);">
+                            <span class="mantra-syllable">LAM</span>
+                        </div>
+                        <span class="mantra-name">Earth Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Grounding yoga poses (Mountain, Warrior)</p>
+                    <p>• Walking barefoot in nature</p>
+                    <p>• Using red gemstones (garnet, red jasper)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card sacral">
+                <div class="chakra-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>Sacral Chakra</h3>
+                <p><strong>Svadhisthana</strong> - Lower abdomen</p>
+                <p>Center of creativity, sexuality, and emotions</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--sacral);">
+                            <i class="fas fa-hand-holding-water" title="Varuna Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Varuna Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--sacral);">
+                            <span class="mantra-syllable">VAM</span>
+                        </div>
+                        <span class="mantra-name">Water Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Hip-opening yoga poses (Bound Angle, Goddess)</p>
+                    <p>• Creative expression (art, dance)</p>
+                    <p>• Using orange gemstones (carnelian, moonstone)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card solar">
+                <div class="chakra-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3>Solar Plexus Chakra</h3>
+                <p><strong>Manipura</strong> - Upper abdomen</p>
+                <p>Represents personal power, will, and self-esteem</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--solar);">
+                            <i class="fas fa-fist-raised" title="Udana Vayu Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Udana Vayu Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--solar);">
+                            <span class="mantra-syllable">RAM</span>
+                        </div>
+                        <span class="mantra-name">Fire Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Core-strengthening poses (Boat, Plank)</p>
+                    <p>• Embracing challenges, building confidence</p>
+                    <p>• Using yellow gemstones (citrine, amber)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card heart">
+                <div class="chakra-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Heart Chakra</h3>
+                <p><strong>Anahata</strong> - Center of chest</p>
+                <p> governs love, compassion, and emotional balance</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--heart);">
+                            <i class="fas fa-hand-sparkles" title="Anahata Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Anahata Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--heart);">
+                            <span class="mantra-syllable">YAM</span>
+                        </div>
+                        <span class="mantra-name">Air Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Heart-opening poses (Cobra, Camel)</p>
+                    <p>• Practicing gratitude and forgiveness</p>
+                    <p>• Using green/pink gemstones (rose quartz, aventurine)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card throat">
+                <div class="chakra-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3>Throat Chakra</h3>
+                <p><strong>Vishuddha</strong> - Throat area</p>
+                <p>Relates to communication, truth, and self-expression</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--throat);">
+                            <i class="fas fa-hands-clapping" title="Granthita Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Granthita Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--throat);">
+                            <span class="mantra-syllable">HAM</span>
+                        </div>
+                        <span class="mantra-name">Ether Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Chanting, singing, vocal exercises</p>
+                    <p>• Speaking your truth, active listening</p>
+                    <p>• Using blue gemstones (lapis lazuli, aquamarine)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card third-eye">
+                <div class="chakra-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Third Eye Chakra</h3>
+                <p><strong>Ajna</strong> - Between eyebrows</p>
+                <p>Connected to intuition, insight, and wisdom</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--third-eye);">
+                            <i class="fas fa-hand-holding" title="Kalesvara Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Kalesvara Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--third-eye);">
+                            <span class="mantra-syllable">OM</span>
+                        </div>
+                        <span class="mantra-name">Light Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Meditation, visualization, dream recall</p>
+                    <p>• Intuitive decision-making</p>
+                    <p>• Using indigo gemstones (amethyst, sodalite)</p>
+                </div>
+            </div>
+
+            <div class="chakra-card crown">
+                <div class="chakra-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Crown Chakra</h3>
+                <p><strong>Sahasrara</strong> - Top of head</p>
+                <p>Link to spiritual connection and universal consciousness</p>
+
+                <div class="mudra-mantra-container">
+                    <div class="mudra-container">
+                        <span class="mudra-label">HAND MUDRA</span>
+                        <div class="mudra-diagram" style="color: var(--crown);">
+                            <i class="fas fa-praying-hands" title="Dhyana Mudra"></i>
+                        </div>
+                        <span class="mudra-name">Dhyana Mudra</span>
+                    </div>
+                    <div class="mantra-container">
+                        <span class="mantra-label">BIJA MANTRA</span>
+                        <div class="mudra-diagram" style="background: var(--crown);">
+                            <span class="mantra-syllable">AUM</span>
+                        </div>
+                        <span class="mantra-name">Cosmic Element</span>
+                    </div>
+                </div>
+
+                <div class="activation">
+                    <h4>Activation Practices:</h4>
+                    <p>• Meditation, silence, spiritual study</p>
+                    <p>• Connecting with higher self, mindfulness</p>
+                    <p>• Using violet/white gemstones (clear quartz, selenite)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Embrace Your Inner Yogi</h2>
+        <p>Explore a wide range of yoga styles and practices designed to enhance your physical strength, mental clarity, and spiritual well-being.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2025 Medweb. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>

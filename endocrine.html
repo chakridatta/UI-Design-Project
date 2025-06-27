@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://media.istockphoto.com/id/960975348/vector/medical-care-vector-icon.jpg?s=612x612&w=0&k=20&c=7y4z4_yP2AbYap58W9dANYuFf3K-dqEDhCZax0pmMyo=">
+    <title>Endocrine & Digestive Health</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        .website-name {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2e8b57;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        .system {
+            width: 45%;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        #endocrine {
+            border: 3px solid #ff69b4;
+        }
+        #digestive {
+            border: 3px solid #4682b4;
+        }
+        .organ {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+        .endocrine-organ {
+            background-color: #ffb6c1;
+            border: 2px dashed #ff69b4;
+        }
+        .digestive-organ {
+            background-color: #add8e6;
+            border: 2px dashed #4682b4;
+        }
+        .endocrine-organ:hover {
+            background-color: #ff8fab;
+            border: 2px solid green;
+            transform: scale(1.1);
+        }
+        .digestive-organ:hover {
+            background-color: #8fc9ff;
+            transform: scale(1.05);
+        }
+        .endocrine-organ.problems-active {
+            background-color: #ff69b4;
+            color: white;
+            border: 2px solid purple;
+            box-shadow: 0 0 10px #ff69b4;
+            transform: scale(1.1);
+        }
+        .endocrine-organ.precautions-active {
+            background-color: #c71585;
+            color: white;
+            border: 2px solid blue;
+            box-shadow: 0 0 10px #c71585;
+            transform: scale(1.1);
+        }
+        #interaction {
+            width: 80%;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #e6e6fa;
+            border-radius: 15px;
+            border: 2px dotted #9370db;
+            min-height: 50px;
+        }
+        button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .organ-image {
+            max-width: 200px;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+            border-radius: 10px;
+        }
+        .info-section {
+            margin-top: 15px;
+            text-align: left;
+        }
+        .click-instruction {
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://img.icons8.com/color/96/medical-doctor.png" alt="Health Logo" class="logo-img">
+        <h1 class="website-name">Endocrine & Digestive Health</h1>
+    </div>
+    
+    <div class="container">
+        <div class="system" id="endocrine">
+            <h2 style="color: #ff69b4;">Endocrine System</h2>
+            <div class="organ endocrine-organ" 
+                 onclick="showInfo('pituitary', 'problems')" 
+                 ondblclick="showInfo('pituitary', 'precautions')">Pituitary Gland</div>
+            <div class="organ endocrine-organ" 
+                 onclick="showInfo('thyroid', 'problems')" 
+                 ondblclick="showInfo('thyroid', 'precautions')">Thyroid</div>
+            <div class="organ endocrine-organ" 
+                 onclick="showInfo('pancreas', 'problems')" 
+                 ondblclick="showInfo('pancreas', 'precautions')">Pancreas</div>
+            <div class="organ endocrine-organ" 
+                 onclick="showInfo('adrenals', 'problems')" 
+                 ondblclick="showInfo('adrenals', 'precautions')">Adrenal Glands</div>
+        </div>
+        
+        <div class="system" id="digestive">
+            <h2 style="color: #4682b4;">Digestive System</h2>
+            <div class="organ digestive-organ" onclick="showDigestiveAlert('stomach')">Stomach</div>
+            <div class="organ digestive-organ" onclick="showDigestiveAlert('liver')">Liver</div>
+            <div class="organ digestive-organ" onclick="showDigestiveAlert('intestines')">Intestines</div>
+            <div class="organ digestive-organ" onclick="showDigestiveAlert('pharynx')">Pharynx</div>
+        </div>
+    </div>
+    
+    <div id="interaction">
+        <p>Click endocrine organs once for problems, double-click for precautions</p>
+        <p>Click digestive organs to see all info in alert boxes</p>
+    </div>
+    
+    <button onclick="resetInfo()">Reset</button>
+    
+    <script>
+        const organData = {
+            'pituitary': {
+                name: "Pituitary Gland",
+                description: "The 'master gland' that controls other endocrine glands.",
+                problems: ["Pituitary tumors (adenomas)", "Hypopituitarism", "Acromegaly"],
+                precautions: ["Regular hormone level checks", "Head protection from injury", "Monitor vision changes"],
+                image: "https://prod-images-static.radiopaedia.org/images/52193989/e53dddef9ba02e2fb86bad2d0e22ff_big_gallery.jpeg"
+            },
+            'thyroid': {
+                name: "Thyroid",
+                description: "Regulates metabolism throughout the body.",
+                problems: ["Hypothyroidism", "Hyperthyroidism", "Hashimoto's thyroiditis"],
+                precautions: ["Iodine-rich diet", "Regular TSH tests", "Avoid excessive soy consumption"],
+                image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Anterior_thyroid.jpg"
+            },
+            'pancreas': {
+                name: "Pancreas (Endocrine)",
+                description: "Produces insulin and glucagon to regulate blood sugar.",
+                problems: ["Diabetes type 1 & 2", "Pancreatic cancer", "Pancreatitis"],
+                precautions: ["Maintain healthy weight", "Limit alcohol consumption", "Regular blood sugar monitoring"],
+                image: "https://c8.alamy.com/comp/D9NTN6/anatomy-of-pancreas-D9NTN6.jpg"
+            },
+            'adrenals': {
+                name: "Adrenal Glands",
+                description: "Produce stress hormones like cortisol.",
+                problems: ["Addison's disease", "Cushing's syndrome", "Adrenal tumors"],
+                precautions: ["Stress management", "Balanced electrolyte intake", "Regular check-ups if fatigued"],
+                image: "https://nci-media.cancer.gov/pdq/media/images/739009.jpg"
+            },
+            'stomach': {
+                name: "Stomach",
+                description: "Breaks down food using acids and enzymes.",
+                problems: ["GERD (acid reflux)", "Gastritis", "Peptic ulcers"],
+                precautions: ["Eat smaller meals", "Limit spicy/fatty foods", "Avoid lying down after eating"],
+                image: "https://media.geeksforgeeks.org/wp-content/uploads/20240326172454/Layers-of-Stomach.png"
+            },
+            'liver': {
+                name: "Liver",
+                description: "Processes nutrients and detoxifies substances.",
+                problems: ["Fatty liver disease", "Hepatitis", "Cirrhosis"],
+                precautions: ["Limit alcohol", "Vaccinate against hepatitis", "Maintain healthy weight"],
+                image: "https://www.stanfordchildrens.org/content-public/topic/images/56/417456.jpeg"
+            },
+            'intestines': {
+                name: "Intestines",
+                description: "Absorb nutrients and house gut microbiota.",
+                problems: ["IBS", "IBD", "Celiac disease"],
+                precautions: ["High-fiber diet", "Stay hydrated", "Probiotic foods"],
+                image: "https://c8.alamy.com/comp/2RYC2PA/anatomy-of-the-small-intestine-and-large-bowel-medical-diagram-part-of-a-human-gastrointestinal-tract-digestive-system-realistic-vector-illustrat-2RYC2PA.jpg"
+            },
+            'pharynx': {
+                name: "Pharynx",
+                description: "A muscular tube in the neck that serves as a passageway for both air and food.",
+                problems: ["Viral or Bacterial infections", "Irritation from external substances", "Underlying medical conditions like cancer"],
+                precautions: ["Quitting Smoking", "Managing Underlying Conditions", "Drink plenty of water"],
+                image: "https://ecampusontario.pressbooks.pub/app/uploads/sites/989/2021/10/eating-anatomy.jpg"
+            }
+        };
+
+        let lastClickedOrgan = null;
+        let currentOrganId = null;
+
+        function showInfo(organId, infoType) {
+            const organ = organData[organId];
+            const interactionDiv = document.getElementById('interaction');
+            
+            // Remove previous active classes
+            if (lastClickedOrgan) {
+                lastClickedOrgan.classList.remove('problems-active', 'precautions-active');
+            }
+            
+            // Get current organ element
+            const organs = document.querySelectorAll('.organ');
+            let currentOrgan = null;
+            
+            // Find the organ that was clicked
+            for (let i = 0; i < organs.length; i++) {
+                if (organs[i].textContent.trim() === organ.name) {
+                    currentOrgan = organs[i];
+                    break;
+                }
+            }
+            
+            if (!currentOrgan) return;
+            
+            // Add appropriate active class
+            currentOrgan.classList.add(infoType + '-active');
+            lastClickedOrgan = currentOrgan;
+            currentOrganId = organId;
+            
+            let contentHTML = `
+                <h3>${organ.name}</h3>
+                <img src="${organ.image}" alt="${organ.name}" class="organ-image">
+                <p><em>${organ.description}</em></p>
+                <div class="info-section">
+                    <h4>${infoType === 'problems' ? 'Common Problems:' : 'Prevention Tips:'}</h4>
+                    <ul>`;
+            
+            organ[infoType].forEach(item => {
+                contentHTML += `<li>${item}</li>`;
+            });
+            
+            contentHTML += `</ul>
+                </div>
+                <p class="click-instruction">${infoType === 'problems' 
+                    ? 'Double-click for prevention tips' 
+                    : 'Click once for problems'}</p>
+            `;
+            
+            interactionDiv.innerHTML = contentHTML;
+        }
+
+        function showDigestiveAlert(organId) {
+            const organ = organData[organId];
+            const alertMessage = `=== ${organ.name} ===
+                \nDescription: ${organ.description}
+                \n\nCommon Problems:
+                \n- ${organ.problems.join('\n- ')}
+                \n\nPrevention Tips:
+                \n- ${organ.precautions.join('\n- ')}`;
+            alert(alertMessage);
+        }
+
+        function resetInfo() {
+            document.getElementById('interaction').innerHTML = `
+                <p>Click endocrine organs once for problems, double-click for precautions</p>
+                <p>Click digestive organs to see all info in alert boxes</p>
+            `;
+            
+            // Remove all active classes
+            document.querySelectorAll('.organ').forEach(organ => {
+                organ.classList.remove('problems-active', 'precautions-active');
+            });
+            lastClickedOrgan = null;
+            currentOrganId = null;
+        }
+    </script>
+</body>
+</html>

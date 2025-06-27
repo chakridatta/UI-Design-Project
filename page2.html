@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Health Calculators</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f9ff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #2a9d8f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative; /* Added for positioning the home button */
+        }
+
+        /* Style for the Home Button */
+        .home-button {
+            position: absolute;
+            top: 1.5rem; /* Adjust as needed for vertical positioning */
+            left: 2rem; /* Adjust as needed for horizontal positioning */
+            background: #2a6496; /* Button background color */
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10; /* Ensure it's above other elements if needed */
+        }
+
+        .home-button:hover {
+            background: #1a4466; /* Darker background on hover */
+            transform: translateY(-1px);
+        }
+
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-box {
+            display: flex;
+            min-height: 400px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-inputs {
+            flex: 1;
+            padding: 2rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-info {
+            flex: 1;
+            padding: 2rem;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-box:hover .calculator-inputs {
+            transform: scale(1.02);
+        }
+
+        .calculator-box:hover .calculator-info {
+            background: #e6f1f8;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #2a6496;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid red;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #21867a;
+        }
+
+        .result {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 6px;
+            background: #2a9d8f;
+            color:whit;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .result.error {
+            background: #dc2626 !important;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #2a6496;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            background: #1a4466;
+            transform: translateY(-2px);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .info-list li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.9);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .calculator-box {
+                flex-direction: column;
+            }
+            
+            .calculator-inputs, .calculator-info {
+                flex: none;
+                width: 100%;
+            }
+
+            .home-button {
+                position: static; /* Make it flow with content on smaller screens */
+                margin: 1rem auto; /* Center it */
+                display: block; /* Take full width */
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="D:\UID PROJECT FILES\page1.html" class="home-button">Home</a>
+        <h1>Medical Health Calculators</h1>
+    </header>
+
+    <main class="calculator-container">
+        <div class="calculator-box">
+            <div class="calculator-inputs">
+                <h2>BMI Calculator</h2>
+                <div class="input-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" step="0.1" placeholder="10-300 kg">
+                </div>
+                <div class="input-group">
+                    <label>Height (cm)</label>
+                    <input type="number" id="height" placeholder="30-300 cm">
+                </div>
+                <button class="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+                <div id="bmi-result" class="result"></div>
+            </div>
+
+            <div class="calculator-info">
+                <h3>BMI Categories</h3>
+                <ul class="info-list">
+                    <li>Underweight: <strong>&lt; 18.5</strong></li>
+                    <li>Normal weight: <strong>18.5 - 24.9</strong></li>
+                    <li>Overweight: <strong>25 - 29.9</strong></li>
+                    <li>Obesity: <strong>≥ 30</strong></li>
+                </ul>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">
+                    * BMI is a screening tool and doesn't directly measure body fat.
+                </p>
+            </div>
+        </div>
+
+        <div class="calculator-box">
+            <div class="calculator-inputs">
+                <h2>Heart Health</h2>
+                <div class="input-group">
+                    <label>Age</label>
+                    <input type="number" id="age" placeholder="1-120 years">
+                </div>
+                <div class="input-group">
+                    <label>Resting Heart Rate (BPM)</label>
+                    <input type="number" id="heart-rate" placeholder="30-250 BPM">
+                </div>
+                <button class="calculate-btn" onclick="calculateHeartHealth()">Analyze</button>
+                <div id="heart-result" class="result"></div>
+            </div>
+
+            <div class="calculator-info">
+                <h3>Heart Rate Guide</h3>
+                <ul class="info-list">
+                    <li>Normal Resting HR: <strong>60-100 BPM</strong></li>
+                    <li>Bradycardia: <strong>&lt; 60 BPM</strong></li>
+                    <li>Tachycardia: <strong>&gt; 100 BPM</strong></li>
+                </ul>
+                <div style="margin-top: 1.5rem; background: red; padding: 1rem; border-radius: 6px;">
+                    <h4>Exercise Zones</h4>
+                    <p style="margin: 0.5rem 0;">
+                        Moderate: <strong>50-70%</strong> of max HR<br>
+                        Vigorous: <strong>70-85%</strong> of max HR
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // BMI Calculator with Combined Validation
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const resultDiv = document.getElementById('bmi-result');
+
+            // Reset styling
+            resultDiv.className = 'result';
+
+            // Define validity checks
+            const isWeightInvalid = isNaN(weight) || weight < 10 || weight > 300;
+            const isHeightInvalid = isNaN(height) || height < 30 || height > 300;
+
+            // Combined error
+            if (isWeightInvalid && isHeightInvalid) {
+                showError(resultDiv, 'Invalid weight (10-300kg) and height (30-300cm)');
+                return;
+            }
+
+            // Individual errors
+            if (isWeightInvalid) {
+                showError(resultDiv, 'Invalid weight (10-300kg)');
+                return;
+            }
+
+            if (isHeightInvalid) {
+                showError(resultDiv, 'Invalid height (30-300cm)');
+                return;
+            }
+
+            // Calculate BMI
+            const heightMeters = height / 100;
+            const bmi = weight / (heightMeters * heightMeters);
+
+            // BMI range validation
+            if (bmi < 10 || bmi > 70) {
+                showError(resultDiv, 'Unrealistic BMI result');
+                return;
+            }
+
+            let category = '';
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 25) category = 'Normal';
+            else if (bmi < 30) category = 'Overweight';
+            else category = 'Obese';
+
+            resultDiv.innerHTML = `Your BMI: <span style="font-size:1.2em;">${bmi.toFixed(1)}</span><br>(${category})`;
+        }
+
+        // Heart Health Calculator
+        function calculateHeartHealth() {
+            const age = parseInt(document.getElementById('age').value);
+            const heartRate = parseInt(document.getElementById('heart-rate').value);
+            const resultDiv = document.getElementById('heart-result');
+
+            // Reset styling
+            resultDiv.className = 'result';
+
+            if (isNaN(age) || age < 1 || age > 120) {
+                showError(resultDiv, 'Invalid age (1-120 years)');
+                return;
+            }
+
+            if (isNaN(heartRate) || heartRate < 30 || heartRate > 250) {
+                showError(resultDiv, 'Invalid heart rate (30-250 BPM)');
+                return;
+            }
+
+            const maxHR = 220 - age;
+            const targetHR = {
+                low: Math.round(maxHR * 0.5),
+                high: Math.round(maxHR * 0.85)
+            };
+            
+            let analysis = '';
+            if (heartRate < 60) analysis = 'Bradycardia (Low)';
+            else if (heartRate > 100) analysis = 'Tachycardia (High)';
+            else analysis = 'Normal';
+
+            resultDiv.innerHTML = `
+                Max Heart Rate: <strong>${maxHR}</strong><br>
+                Target Zone: <strong>${targetHR.low}-${targetHR.high} BPM</strong><br>
+                Your Status: <strong>${analysis}</strong>
+            `;
+        }
+
+        // Error Handler
+        function showError(element, message) {
+            element.innerHTML = message;
+            element.classList.add('error');
+        }
+    </script>
+</body>
+</html>

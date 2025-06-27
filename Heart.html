@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Disease Awareness</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6e3ec;
+      color: #333;
+    }
+
+    header {
+      background: #c0392b;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Special Navigation Flexbox */
+    .nav-flexbox {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-item {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-width: 180px;
+    }
+
+    .nav-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .nav-item.calculator {
+      background: linear-gradient(135deg, #e74c3c, #8e44ad);
+      font-weight: 700;
+      animation: pulse 2s infinite;
+      border: 2px solid white;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    section.hero {
+      background: url('https://vegnews.com/media/W1siZiIsIjE3MjQ2L2lTdG9jay0xMTMxNTUyNjg5LmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/iStock-1131552689.jpg?sha=24fcacb207ec948a') no-repeat center center/cover;
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(192, 57, 43, 0.6);
+    }
+
+    .hero .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: auto;
+      color: black;
+    }
+
+    .content p {
+      font-size: 20px;
+    }
+
+    .section {
+      background: linear-gradient(to right, #f19f9f, #ffffff);
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section ul {
+      margin-left: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .problems {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 1200px;
+    }
+
+    .problem-card {
+      background: rgb(249, 209, 209);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 250px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      font-weight: 600;
+      border: 2px solid transparent;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      border-color: #c0392b;
+    }
+
+    .solution-box {
+      text-align: center;
+      background-color: #ffe6e6;
+      border: 2px solid #c0392b;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background: #c0392b;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-flexbox {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-item {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .hero {
+        padding: 4rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Heart Disease Awareness</h1>
+    <p>Learn about the causes, symptoms, prevention, and more</p>
+  </header>
+
+  <!-- Special Navigation Flexbox -->
+  <div class="nav-flexbox">
+    <div class="nav-item calculator" onclick="window.location.href='heart_calculator.html'">
+      ❤️ Heart Risk Calculator
+    </div>
+    <div class="nav-item" onclick="scrollToSection('causes')">
+      Causes
+    </div>
+    <div class="nav-item" onclick="scrollToSection('prevention')">
+      Prevention
+    </div>
+    <div class="nav-item" onclick="scrollToSection('symptoms')">
+      Symptoms
+    </div>
+    <div class="nav-item" onclick="scrollToSection('resources')">
+      Resources
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="content">
+      <h2>Take Care of Your Heart</h2>
+      <p><em>Heart disease is the leading cause of death globally. Educate yourself and stay healthy.</em></p>
+    </div>
+  </section>
+
+  <section class="section" id="causes">
+    <h2>Causes</h2>
+    <ul>
+      <li>Unhealthy diet high in saturated fats, sugar, and salt</li>
+      <li>Lack of regular physical activity</li>
+      <li>Smoking and tobacco use</li>
+      <li>Excessive alcohol consumption</li>
+      <li>High blood pressure (hypertension)</li>
+      <li>High cholesterol levels</li>
+      <li>Diabetes or insulin resistance</li>
+      <li>Chronic stress and poor mental health</li>
+      <li>Obesity or being overweight</li>
+    </ul>
+  </section>
+
+  <section class="section" id="prevention">
+    <h2>Prevention</h2>
+    <ul>
+      <li>Eat a balanced diet rich in fruits, vegetables, and whole grains</li>
+      <li>Engage in at least 30 minutes of physical activity daily</li>
+      <li>Avoid smoking and exposure to secondhand smoke</li>
+      <li>Limit alcohol intake to moderate levels</li>
+      <li>Maintain a healthy weight</li>
+      <li>Monitor and control blood pressure and cholesterol</li>
+      <li>Manage stress through relaxation techniques and hobbies</li>
+      <li>Get regular health check-ups</li>
+      <li>Sleep at least 7-8 hours a night</li>
+    </ul>
+  </section>
+
+  <section class="section" id="symptoms">
+    <h2>Common Symptoms</h2>
+    <ul>
+      <li>Chest pain or discomfort (angina)</li>
+      <li>Shortness of breath</li>
+      <li>Pain in arms, neck, jaw, shoulder or back</li>
+      <li>Nausea or vomiting</li>
+      <li>Fatigue</li>
+      <li>Dizziness or lightheadedness</li>
+      <li>Cold sweats</li>
+      <li>Irregular heartbeat</li>
+    </ul>
+  </section>
+
+  <section class="problems" id="resources">
+    <div class="problem-card" onclick="handleClickOne()" ondblclick="handleDoubleClickOne()">High Blood Pressure</div>
+    <div class="problem-card" onclick="handleClickTwo()" ondblclick="handleDoubleClickTwo()">Chest Pain</div>
+    <div class="problem-card" onclick="handleClickThree()" ondblclick="handleDoubleClickThree()">Irregular Heartbeat</div>
+    <div class="problem-card" onclick="handleClickFour()" ondblclick="handleDoubleClickFour()">Shortness of Breath</div>
+    <div class="problem-card" onclick="handleClickFive()" ondblclick="handleDoubleClickFive()">Fatigue</div>
+  </section>
+
+  <div id="solution" class="solution-box"></div>
+
+  <footer>
+    <p>For medical emergencies, call your local emergency number immediately.</p>
+    <p>&copy; 2025 Heart Health Awareness. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    function showMessage(message) {
+      const solutionBox = document.getElementById('solution');
+      solutionBox.textContent = "Dr. Heart says: " + message;
+      solutionBox.style.display = "block";
+      
+      // Hide after 10 seconds
+      setTimeout(() => {
+        solutionBox.style.display = "none";
+      }, 10000);
+    }
+
+    function handleClickOne() {
+      showMessage("Reduce salt intake, exercise regularly, manage stress, and take prescribed medications.");
+    }
+
+    function handleDoubleClickOne() {
+      showMessage("Regular check-ups and low sodium diets are essential for long-term blood pressure control.");
+    }
+
+    function handleClickTwo() {
+      showMessage("Seek immediate medical attention, avoid heavy meals, and monitor your heart health regularly.");
+    }
+
+    function handleDoubleClickTwo() {
+      showMessage("Persistent chest pain may signal angina or heart attack. Don't delay treatment.");
+    }
+
+    function handleClickThree() {
+      showMessage("Consult a cardiologist, avoid caffeine, and manage anxiety with proper care.");
+    }
+
+    function handleDoubleClickThree() {
+      showMessage("Irregular heartbeat may need an ECG test or Holter monitor evaluation.");
+    }
+
+    function handleClickFour() {
+      showMessage("Shortness of breath can signal heart failure. Consult a doctor and rest.");
+    }
+
+    function handleDoubleClickFour() {
+      showMessage("Monitor your oxygen levels and avoid physical exertion until medically cleared.");
+    }
+
+    function handleClickFive() {
+      showMessage("Fatigue may be a sign of poor circulation. Get enough rest and eat healthy.");
+    }
+
+    function handleDoubleClickFive() {
+      showMessage("Persistent fatigue warrants a full cardiac and lifestyle assessment.");
+    }
+
+    // For the calculator link to work, you would need to:
+    // 1. Create a heart-risk-calculator.html page
+    // 2. Save it in the same folder as this page
+    // 3. The navigation item will then link to it
+  </script>
+</body>
+</html>
